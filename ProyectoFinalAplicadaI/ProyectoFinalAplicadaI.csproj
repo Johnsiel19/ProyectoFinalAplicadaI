@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\UsuariosBBL.cs" />
     <Compile Include="DAL\Contexto.cs" />
     <Compile Include="Entidades\Usuarios.cs" />
     <Compile Include="MainForm.cs">
@@ -115,7 +116,6 @@
     <None Include="Resources\nuevo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BLL\" />
     <Folder Include="UI\Consultas\" />
     <Folder Include="UI\Reportes\" />
   </ItemGroup>
