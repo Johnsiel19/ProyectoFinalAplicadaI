@@ -61,10 +61,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="rUsuario.cs">
+    <Compile Include="UI\Registros\rUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="rUsuario.Designer.cs">
+    <Compile Include="UI\Registros\rUsuario.Designer.cs">
       <DependentUpon>rUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -82,7 +82,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="rUsuario.resx">
+    <EmbeddedResource Include="UI\Registros\rUsuario.resx">
       <DependentUpon>rUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -117,7 +117,6 @@
   <ItemGroup>
     <Folder Include="BLL\" />
     <Folder Include="UI\Consultas\" />
-    <Folder Include="UI\Registros\" />
     <Folder Include="UI\Reportes\" />
   </ItemGroup>
   <ItemGroup>
