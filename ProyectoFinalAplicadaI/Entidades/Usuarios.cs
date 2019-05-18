@@ -13,18 +13,21 @@ namespace ProyectoFinalAplicadaI.Entidades
         public int UsuarioId { get; set;}
         public string Nombre { get; set; }
         public string Email { get; set; }
-        public string NuvelUsuario { get; set; }
+        public string NivelUsuario { get; set; }
         public string Usuario { get; set; }
         public string Clave { get; set; }
+
+        public DateTime FechaIngreso { get; set; }
 
         public Usuarios()
         {
              UsuarioId = 0;
              Nombre = String.Empty;
              Email = String.Empty;
-             NuvelUsuario = String.Empty;
+             NivelUsuario = String.Empty;
              Usuario = String.Empty;
              Clave = String.Empty;
+            FechaIngreso = DateTime.Now;
          
         }
     }

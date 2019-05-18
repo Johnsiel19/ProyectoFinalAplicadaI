@@ -16,5 +16,11 @@ namespace ProyectoFinalAplicadaI
         {
             InitializeComponent();
         }
+
+        private void UsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rUsuario frm = new rUsuario();
+            frm.Show();
+        }
     }
 }
