@@ -173,7 +173,7 @@ namespace ProyectoFinalAplicadaI
                 MessageBox.Show("Guardado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            Limpiar();
         }
 
         private void Buscarbutton_Click(object sender, EventArgs e)
@@ -182,7 +182,7 @@ namespace ProyectoFinalAplicadaI
             Usuarios usuario = new Usuarios();
 
             int.TryParse(UsuarioIdnumericUpDown.Text, out id);
-            
+            Limpiar();
 
             usuario = UsuariosBLL.Buscar(id);
 
@@ -196,7 +196,7 @@ namespace ProyectoFinalAplicadaI
             {
                 MessageBox.Show("Usuario no existe");
             }
-            Limpiar();
+       
         }
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
