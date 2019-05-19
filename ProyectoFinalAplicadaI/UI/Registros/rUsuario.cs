@@ -153,7 +153,7 @@ namespace ProyectoFinalAplicadaI
                 return;
 
             usuario = LlenaClase();
-            Limpiar();
+
 
             if (UsuarioIdnumericUpDown.Value == 0) { 
                 paso = UsuariosBLL.Guardar(usuario);
@@ -196,7 +196,7 @@ namespace ProyectoFinalAplicadaI
             {
                 MessageBox.Show("Usuario no existe");
             }
-           
+            Limpiar();
         }
 
         private void Eliminarbutton_Click(object sender, EventArgs e)
