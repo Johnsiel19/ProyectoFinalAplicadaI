@@ -20,6 +20,8 @@ namespace ProyectoFinalAplicadaI
         private void UsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rUsuario frm = new rUsuario();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+ 
             frm.Show();
         }
     }

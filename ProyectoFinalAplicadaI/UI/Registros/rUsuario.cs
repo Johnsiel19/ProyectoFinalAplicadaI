@@ -34,6 +34,7 @@ namespace ProyectoFinalAplicadaI
             ClavetextBox.Text = string.Empty;
             UsuariotextBox.Text = string.Empty;
             ConfirmarClavetextBox.Text = string.Empty;
+            errorProvider.Clear();
           
 
         }
@@ -58,7 +59,7 @@ namespace ProyectoFinalAplicadaI
             NombretextBox.Text = usuario.Nombre;
             EmailtextBox.Text = usuario.Email;
             NivelUsuariocomboBox.Text = usuario.NivelUsuario;
-            ClavetextBox.Text = usuario.NivelUsuario;
+            ClavetextBox.Text = usuario.Clave;
             UsuariotextBox.Text = usuario.Usuario;
             FechaIngresodateTimePicker.Value = usuario.FechaIngreso;
 
@@ -74,15 +75,70 @@ namespace ProyectoFinalAplicadaI
         {
 
             bool paso = true;
-            errorProvider1.Clear();
+            errorProvider.Clear();
+
+            string Clave = ClavetextBox.Text;
+            string Confirmar = ConfirmarClavetextBox.Text;
+
+            int Resultado = 0;
+
+            Resultado = string.Compare(Clave, Confirmar);
+
+            if(Resultado != 0)
+            {
+                errorProvider.SetError(ConfirmarClavetextBox, "Clave no coincide!");
+                ConfirmarClavetextBox.Focus();
+                paso = false;
+            }
+
 
             if (NombretextBox.Text == string.Empty)
             {
-                errorProvider1.SetError(NombretextBox, "El campo Nombre no puede estar vacio");
+                errorProvider.SetError(NombretextBox, "El campo Nombre no puede estar vacio");
                 NombretextBox.Focus();
+                paso = false;
+            }
+
+            if (EmailtextBox.Text == string.Empty)
+            {
+                errorProvider.SetError(EmailtextBox, "El campo Email no puede estar vacio");
+                EmailtextBox.Focus();
                 paso = false;
 
             }
+
+            if (NivelUsuariocomboBox.Text == string.Empty)
+            {
+                errorProvider.SetError(NivelUsuariocomboBox, "El campo Nivel de Usuario no puede estar vacio");
+                NivelUsuariocomboBox.Focus();
+                paso = false;
+
+            }
+
+            if (UsuariotextBox.Text == string.Empty)
+            {
+                errorProvider.SetError(UsuariotextBox, "El campo Usuario no puede estar vacio");
+                UsuariotextBox.Focus();
+                paso = false;
+
+            }
+
+            if (ClavetextBox.Text == string.Empty)
+            {
+                errorProvider.SetError(ClavetextBox, "El campo Clave no puede estar vacio");
+                ClavetextBox.Focus();
+                paso = false;
+
+            }
+
+            if (ConfirmarClavetextBox.Text == string.Empty)
+            {
+                errorProvider.SetError(ConfirmarClavetextBox, "El campo Confirmar no puede estar vacio");
+                ConfirmarClavetextBox.Focus();
+                paso = false;
+
+            }
+
 
             return paso;
 
@@ -90,43 +146,28 @@ namespace ProyectoFinalAplicadaI
 
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
-            Usuarios persona;
+            Usuarios usuario;
             bool paso = false;
 
             if (!Validar())
                 return;
 
-            persona = LlenaClase();
+            usuario = LlenaClase();
             Limpiar();
 
-
-            //Determinar si es guardar o modificar
-
-            if (UsuarioIdnumericUpDown.Value == 0)
-
-                paso = UsuariosBLL.Guardar(persona);
-
+            if (UsuarioIdnumericUpDown.Value == 0) { 
+                paso = UsuariosBLL.Guardar(usuario);
+            }
             else
-
             {
-
                 if (!ExisteEnLaBaseDeDatos())
-
                 {
-
                     MessageBox.Show("No se puede modificar una persona que no existe", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                     return;
-
                 }
-
-                paso = UsuariosBLL.Modificar(persona);
+                paso = UsuariosBLL.Modificar(usuario);
 
             }
-
-
-
-            //Informar el resultado
 
             if (paso)
                 MessageBox.Show("Guardado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -135,7 +176,48 @@ namespace ProyectoFinalAplicadaI
 
         }
 
+        private void Buscarbutton_Click(object sender, EventArgs e)
+        {
+            int id;
+            Usuarios usuario = new Usuarios();
 
+            int.TryParse(UsuarioIdnumericUpDown.Text, out id);
+            
 
+            usuario = UsuariosBLL.Buscar(id);
+
+            if(usuario != null)
+            {
+                MessageBox.Show("Usuario encontrado");
+                LlenaCampo(usuario);
+
+            }
+            else
+            {
+                MessageBox.Show("Usuario no existe");
+            }
+           
+        }
+
+        private void Eliminarbutton_Click(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+            int id;
+            int.TryParse(UsuarioIdnumericUpDown.Text, out id);
+            Limpiar();
+            if (UsuariosBLL.Eliminar(id))
+            {
+                MessageBox.Show("Eliminado");
+            }
+            else
+            {
+                errorProvider.SetError(UsuarioIdnumericUpDown, "No se puede elimina, porque no existe");
+            }
+        }
+
+        private void NivelUsuariocomboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

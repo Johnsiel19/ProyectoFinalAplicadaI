@@ -17,11 +17,14 @@ namespace ProyectoFinalAplicadaI.BLL
         public static bool Guardar(Usuarios usuario)
         {
             bool paso = false;
-            Contexto db = new Contexto();
+            Contexto contexto = new Contexto();
             try
             {
-                if (db.Usuario.Add(usuario) != null)
-                    paso = db.SaveChanges() > 0;
+                if (contexto.Usuario.Add(usuario) != null)
+                {
+                    contexto.SaveChanges();
+                    paso = true;
+                }   
             }
             catch (Exception)
             {
@@ -29,7 +32,7 @@ namespace ProyectoFinalAplicadaI.BLL
             }
             finally
             {
-                db.Dispose();
+                contexto.Dispose();
             }
             return paso;
         }
@@ -85,18 +88,20 @@ namespace ProyectoFinalAplicadaI.BLL
 
         public static Usuarios Buscar(int id)
         {
+            Usuarios usuarios = new Usuarios();
             Contexto contexto = new Contexto();
-            _ = new Usuarios();
-            Usuarios usuario;
+            
+            
             try
             {
-                usuario = contexto.Usuario.Find(id);
+                usuarios = contexto.Usuario.Find(id);
+                contexto.Dispose();
             }
             catch (Exception)
             {
                 throw;
             }
-            return usuario;
+            return usuarios;
 
         }
 
