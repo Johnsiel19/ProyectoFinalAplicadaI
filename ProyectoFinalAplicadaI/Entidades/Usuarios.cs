@@ -11,7 +11,7 @@ namespace ProyectoFinalAplicadaI.Entidades
     {
         [Key]
         public int UsuarioId { get; set;}
-        public string Nombre { get; set; }
+        public string Nombres { get; set; }
         public string Email { get; set; }
         public string NivelUsuario { get; set; }
         public string Usuario { get; set; }
@@ -22,7 +22,7 @@ namespace ProyectoFinalAplicadaI.Entidades
         public Usuarios()
         {
              UsuarioId = 0;
-             Nombre = String.Empty;
+             Nombres = String.Empty;
              Email = String.Empty;
              NivelUsuario = String.Empty;
              Usuario = String.Empty;

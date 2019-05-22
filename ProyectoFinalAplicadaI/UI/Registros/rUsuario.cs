@@ -43,7 +43,7 @@ namespace ProyectoFinalAplicadaI
         {
             Usuarios usuario = new Usuarios();
             usuario.UsuarioId = Convert.ToInt32(UsuarioIdnumericUpDown.Value);
-            usuario.Nombre = NombretextBox.Text;
+            usuario.Nombres = NombretextBox.Text;
             usuario.Email = EmailtextBox.Text;
             usuario.NivelUsuario = NivelUsuariocomboBox.Text;
             usuario.Clave = ClavetextBox.Text;
@@ -56,7 +56,7 @@ namespace ProyectoFinalAplicadaI
         private void LlenaCampo(Usuarios usuario)
         {
             UsuarioIdnumericUpDown.Value = usuario.UsuarioId;
-            NombretextBox.Text = usuario.Nombre;
+            NombretextBox.Text = usuario.Nombres;
             EmailtextBox.Text = usuario.Email;
             NivelUsuariocomboBox.Text = usuario.NivelUsuario;
             ClavetextBox.Text = usuario.Clave;
@@ -218,6 +218,11 @@ namespace ProyectoFinalAplicadaI
         private void NivelUsuariocomboBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void UsuariotextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
