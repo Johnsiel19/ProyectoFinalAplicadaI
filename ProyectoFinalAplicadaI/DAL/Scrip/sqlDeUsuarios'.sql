@@ -1,8 +1,8 @@
-create database UsuarioDB
+create database ProyectoFinalAplicadaI
 go
-use UsuarioDB
+use ProyectoFinalAplicadaI
 go
-create table ProyectoFinalAplicadaI(
+create table Usuarios (
 UsuarioId int primary key identity,
 Nombres varchar(50),
 Email varchar(50),

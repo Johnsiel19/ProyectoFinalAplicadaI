@@ -10,10 +10,12 @@ namespace ProyectoFinalAplicadaI.DAL
 {
     public class Contexto : DbContext
     {
-        public DbSet<Usuarios> Usuario { get; set; }
+        public DbSet<Usuarios> Usuarios { get; set; }
 
 
         public Contexto() : base("ConStr")
         { }
+
+     
     }
 }

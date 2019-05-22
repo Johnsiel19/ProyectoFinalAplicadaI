@@ -12,19 +12,18 @@ namespace ProyectoFinalAplicadaI.BLL
 {
     public class UsuariosBLL
     {
-        public static List<Usuarios> Usuarios { get; private set; }
+        
 
         public static bool Guardar(Usuarios usuario)
         {
             bool paso = false;
-            Contexto contexto = new Contexto();
+            Contexto db = new Contexto();
             try
             {
-                if (contexto.Usuario.Add(usuario) != null)
-                {
-                    contexto.SaveChanges();
-                    paso = true;
-                }   
+                if (db.Usuarios.Add(usuario) != null)
+
+                    paso = db.SaveChanges() > 0;
+               
             }
             catch (Exception)
             {
@@ -32,7 +31,7 @@ namespace ProyectoFinalAplicadaI.BLL
             }
             finally
             {
-                contexto.Dispose();
+                db.Dispose();
             }
             return paso;
         }
@@ -40,22 +39,20 @@ namespace ProyectoFinalAplicadaI.BLL
         public static bool Modificar(Usuarios usuario)
         {
             bool paso = false;
-            Contexto contexto = new Contexto();
+            Contexto db = new Contexto();
             try
             {
-                contexto.Entry(usuario).State = EntityState.Modified;
-                if(contexto.SaveChanges() > 0)
-                {
-                    paso = true;
-
-                }
-                contexto.Dispose();
-
+                db.Entry(usuario).State = EntityState.Modified;
+                paso = (db.SaveChanges() > 0);
 
             }
             catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                db.Dispose();
             }
             return paso;
 
@@ -64,24 +61,20 @@ namespace ProyectoFinalAplicadaI.BLL
         public static bool Eliminar(int id)
         {
             bool paso = false;
-
-            Contexto contexto = new Contexto();
+            Contexto db = new Contexto();
             try
             {
-                Usuarios usuario = contexto.Usuario.Find(id);
-
-                contexto.Usuario.Remove(usuario);
-
-                if (contexto.SaveChanges() > 0)
-                {
-                    paso = true;
-
-                }
-                contexto.Dispose();
+                var eliminar = db.Usuarios.Find(id);
+                db.Entry(eliminar).State = EntityState.Deleted;
+                paso = (db.SaveChanges() > 0);
             }
             catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                db.Dispose();
             }
             return paso;
         }
@@ -89,38 +82,45 @@ namespace ProyectoFinalAplicadaI.BLL
         public static Usuarios Buscar(int id)
         {
             Usuarios usuarios = new Usuarios();
-            Contexto contexto = new Contexto();
+            Contexto db = new Contexto();
             
             
             try
             {
-                usuarios = contexto.Usuario.Find(id);
-                contexto.Dispose();
+                usuarios = db.Usuarios.Find(id);
+                db.Dispose();
             }
             catch (Exception)
             {
                 throw;
             }
+            finally
+            {
+                db.Dispose();
+            }
             return usuarios;
 
         }
 
-        public static List<Usuarios> GetUsuarios(Expression<Func<Usuarios, bool >> expression)
+        public static List<Usuarios> GetList(Expression<Func<Usuarios, bool >> usuarios)
         {
-            List<Usuarios> usuarios = new List<Usuarios>();
-            Contexto contexto = new Contexto();
+            List<Usuarios> Lista = new List<Usuarios>();
+            Contexto db = new Contexto();
 
             try
             {
-                Usuarios = contexto.Usuario.Where(expression).ToList();
-                contexto.Dispose();
+                Lista = db.Usuarios.Where(usuarios).ToList();
 
             }
             catch
             {
                 throw;
             }
-            return Usuarios;
+            finally
+            {
+                db.Dispose();
+            }
+            return Lista;
 
         }
 
