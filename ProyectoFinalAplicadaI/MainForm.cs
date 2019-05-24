@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoFinalAplicadaI.UI.Registros;
 
 namespace ProyectoFinalAplicadaI
 {
@@ -22,6 +23,14 @@ namespace ProyectoFinalAplicadaI
             rUsuario frm = new rUsuario();
             frm.StartPosition = FormStartPosition.CenterScreen;
  
+            frm.Show();
+        }
+
+        private void CargoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rCargos frm = new rCargos();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
             frm.Show();
         }
     }

@@ -53,14 +53,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\CargosBLL.cs" />
     <Compile Include="BLL\UsuariosBBL.cs" />
     <Compile Include="DAL\Contexto.cs" />
+    <Compile Include="Entidades\Cargos.cs" />
     <Compile Include="Entidades\Usuarios.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cCargos.Designer.cs">
+      <DependentUpon>cCargos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cUsuarios.Designer.cs">
+      <DependentUpon>cUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rCargos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rCargos.Designer.cs">
+      <DependentUpon>rCargos.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Registros\rUsuario.cs">
       <SubType>Form</SubType>
@@ -83,6 +103,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Registros\rCargos.resx">
+      <DependentUpon>rCargos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Registros\rUsuario.resx">
       <DependentUpon>rUsuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,7 +139,6 @@
     <None Include="Resources\nuevo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UI\Consultas\" />
     <Folder Include="UI\Reportes\" />
   </ItemGroup>
   <ItemGroup>
