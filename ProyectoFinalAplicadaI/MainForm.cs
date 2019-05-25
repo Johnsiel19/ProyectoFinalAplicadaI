@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoFinalAplicadaI.UI.Registros;
+using ProyectoFinalAplicadaI.UI.Consultas;
 
 namespace ProyectoFinalAplicadaI
 {
@@ -22,7 +23,6 @@ namespace ProyectoFinalAplicadaI
         {
             rUsuario frm = new rUsuario();
             frm.StartPosition = FormStartPosition.CenterScreen;
- 
             frm.Show();
         }
 
@@ -30,8 +30,23 @@ namespace ProyectoFinalAplicadaI
         {
             rCargos frm = new rCargos();
             frm.StartPosition = FormStartPosition.CenterScreen;
-
             frm.Show();
+        }
+
+        private void UsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cUsuarios frm = new cUsuarios();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Show();
+
+        }
+
+        private void CargosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cCargos frm = new cCargos();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.Show();
+
         }
     }
 }

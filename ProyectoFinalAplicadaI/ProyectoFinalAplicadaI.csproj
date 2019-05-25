@@ -103,6 +103,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Consultas\cCargos.resx">
+      <DependentUpon>cCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Consultas\cUsuarios.resx">
+      <DependentUpon>cUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Registros\rCargos.resx">
       <DependentUpon>rCargos.cs</DependentUpon>
     </EmbeddedResource>
