@@ -17,6 +17,8 @@ namespace ProyectoFinalAplicadaI
         public rUsuario()
         {
             InitializeComponent();
+            
+           
         }
 
         private void Nuevobutton_Click(object sender, EventArgs e)
