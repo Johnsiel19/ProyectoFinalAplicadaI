@@ -17,6 +17,7 @@ namespace ProyectoFinalAplicadaI.UI.Consultas
         public cCargos()
         {
             InitializeComponent();
+            FiltrocomboBox.Text = "Todo";
         }
 
         private void Consultarbutton_Click(object sender, EventArgs e)

@@ -19,10 +19,7 @@ namespace ProyectoFinalAplicadaI.UI.Consultas
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void Consultarbutton_Click(object sender, EventArgs e)
         {
